@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Library
+{% endblock title %}
+
+{% block page_module %}library{% endblock page_module %}
+
+{% block body_attrs %}data-library-page="books"{% endblock body_attrs %}
+
+{% block content %}
+
+<div class="page-header page-header-row">
+  <div>
+    <h1 class="page-title">Library Inventory</h1>
+    <p class="page-subtitle">Browse and manage the school library book collection.</p>
+  </div>
+  <div class="d-flex gap-2">
+    <a href="{% url 'library-issue' %}" class="btn btn-outline-primary"><i class="fa-solid fa-book-open me-2"></i>Issue Book</a>
+    <a href="{% url 'library-return' %}" class="btn btn-primary"><i class="fa-solid fa-rotate-left me-2"></i>Return Book</a>
+  </div>
+</div>
+
+<div id="library-stats" class="library-stats-grid"></div>
+
+<div class="filter-bar">
+  <div class="search-input-wrapper">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="search" id="book-search" class="form-control form-control-custom" placeholder="Search books...">
+  </div>
+  <select id="category-filter" class="form-select form-select-custom" style="width:auto">
+    <option value="">All Categories</option>
+    <option value="Literature">Literature</option>
+    <option value="Fiction">Fiction</option>
+    <option value="Fantasy">Fantasy</option>
+    <option value="Science">Science</option>
+    <option value="History">History</option>
+    <option value="Philosophy">Philosophy</option>
+    <option value="Textbook">Textbook</option>
+    <option value="Technology">Technology</option>
+    <option value="Horror">Horror</option>
+  </select>
+</div>
+
+<div class="content-card">
+  <div class="content-card-header">
+    <h2 class="content-card-title">Book Catalog</h2>
+  </div>
+  <div class="content-card-body no-padding">
+    <div class="table-responsive-custom">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Copies</th>
+            <th>Available</th>
+            <th>Shelf</th>
+          </tr>
+        </thead>
+        <tbody id="books-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

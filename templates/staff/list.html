@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}
+Staff
+{% endblock title %}
+
+{% block page_module %}staff{% endblock page_module %}
+
+{% block content %}
+
+<div class="page-header page-header-row">
+  <div>
+    <h1 class="page-title">Staff Directory</h1>
+    <p class="page-subtitle">Administrative and support staff across all departments.</p>
+  </div>
+  <button id="add-staff-btn" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Add Staff</button>
+</div>
+
+<div class="filter-bar">
+  <div class="search-input-wrapper">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="search" id="staff-search" class="form-control form-control-custom" placeholder="Search staff...">
+  </div>
+  <select id="staff-department-filter" class="form-select form-select-custom" style="width:auto">
+    <option value="">All Departments</option>
+    <option value="Administration">Administration</option>
+    <option value="Finance">Finance</option>
+    <option value="Library">Library</option>
+    <option value="IT">IT</option>
+    <option value="Maintenance">Maintenance</option>
+    <option value="Health">Health</option>
+    <option value="Security">Security</option>
+    <option value="Cafeteria">Cafeteria</option>
+    <option value="Transport">Transport</option>
+  </select>
+</div>
+
+<div class="content-card">
+  <div class="content-card-body no-padding">
+    <div class="table-responsive-custom">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Joined</th>
+          </tr>
+        </thead>
+        <tbody id="staff-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="staffModal" tabindex="-1" aria-labelledby="staffModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staffModalLabel">Add Staff Member</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="staff-form">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label-custom" for="staff-first-name">First Name</label>
+              <input type="text" class="form-control form-control-custom" id="staff-first-name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="staff-last-name">Last Name</label>
+              <input type="text" class="form-control form-control-custom" id="staff-last-name" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label-custom" for="staff-email">Email</label>
+              <input type="email" class="form-control form-control-custom" id="staff-email" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label-custom" for="staff-phone">Phone</label>
+              <input type="tel" class="form-control form-control-custom" id="staff-phone" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="staff-department">Department</label>
+              <select class="form-select form-select-custom" id="staff-department" required>
+                <option value="Administration">Administration</option>
+                <option value="Finance">Finance</option>
+                <option value="Library">Library</option>
+                <option value="IT">IT</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Health">Health</option>
+                <option value="Security">Security</option>
+                <option value="Cafeteria">Cafeteria</option>
+                <option value="Transport">Transport</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="staff-designation">Designation</label>
+              <input type="text" class="form-control form-control-custom" id="staff-designation" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="save-staff-btn">Save Staff</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Student
+{% endblock title %}
+
+{% block page_module %}students{% endblock page_module %}
+
+{% block body_attrs %}data-student-form="true"{% endblock body_attrs %}
+
+{% block content %}
+
+<div class="page-header">
+  <nav class="breadcrumb-nav" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'students-list' %}">Students</a></li>
+      <li class="breadcrumb-item active">Edit</li>
+    </ol>
+  </nav>
+  <h1 class="page-title">Edit Student</h1>
+</div>
+
+<div class="content-card">
+  <div class="content-card-body">
+    <form id="student-page-form">
+      <input type="hidden" id="student-form-id">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label-custom" for="student-first-name">First Name</label>
+          <input type="text" class="form-control form-control-custom" id="student-first-name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="student-last-name">Last Name</label>
+          <input type="text" class="form-control form-control-custom" id="student-last-name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="student-email">Email</label>
+          <input type="email" class="form-control form-control-custom" id="student-email" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="student-phone">Phone</label>
+          <input type="tel" class="form-control form-control-custom" id="student-phone" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-custom" for="student-grade">Grade</label>
+          <select class="form-select form-select-custom" id="student-grade" required>
+            <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-custom" for="student-section">Section</label>
+          <select class="form-select form-select-custom" id="student-section" required>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-custom" for="student-gender">Gender</label>
+          <select class="form-select form-select-custom" id="student-gender" required>
+            <option value="Male">Male</option><option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="student-dob">Date of Birth</label>
+          <input type="date" class="form-control form-control-custom" id="student-dob" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="student-status">Status</label>
+          <select class="form-select form-select-custom" id="student-status" required>
+            <option value="Active">Active</option><option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'students-list' %}" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+Reports
+{% endblock title %}
+
+{% block page_module %}reports{% endblock page_module %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">Reports</h1>
+  <p class="page-subtitle">Analytics and reports for attendance, library, and student data.</p>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-md-4">
+    <div class="report-card">
+      <div class="report-card-icon" style="background:rgba(79,70,229,0.12);color:#4f46e5"><i class="fa-solid fa-calendar-check"></i></div>
+      <h3>Attendance Report</h3>
+      <p>Grade-wise attendance analytics and trends.</p>
+      <button class="btn btn-sm btn-outline-primary export-report-btn">Export PDF</button>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="report-card">
+      <div class="report-card-icon" style="background:rgba(16,185,129,0.12);color:#10b981"><i class="fa-solid fa-book"></i></div>
+      <h3>Library Report</h3>
+      <p>Book inventory and circulation statistics.</p>
+      <button class="btn btn-sm btn-outline-primary export-report-btn">Export PDF</button>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="report-card">
+      <div class="report-card-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b"><i class="fa-solid fa-user-graduate"></i></div>
+      <h3>Student Report</h3>
+      <p>Enrollment and class distribution data.</p>
+      <button class="btn btn-sm btn-outline-primary export-report-btn">Export PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="content-card mb-4">
+  <div class="content-card-header">
+    <h2 class="content-card-title">Attendance Report</h2>
+    <button class="btn btn-sm btn-outline-primary export-report-btn"><i class="fa-solid fa-download me-1"></i> Export</button>
+  </div>
+  <div class="content-card-body">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="chart-container"><canvas id="attendanceReportChart"></canvas></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="table-responsive-custom">
+          <table class="data-table">
+            <thead><tr><th>Grade</th><th>Students</th><th>Avg Attendance</th><th>Status</th></tr></thead>
+            <tbody id="attendance-report-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-card mb-4">
+  <div class="content-card-header">
+    <h2 class="content-card-title">Library Report</h2>
+    <button class="btn btn-sm btn-outline-primary export-report-btn"><i class="fa-solid fa-download me-1"></i> Export</button>
+  </div>
+  <div class="content-card-body">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="chart-container"><canvas id="libraryReportChart"></canvas></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="table-responsive-custom">
+          <table class="data-table">
+            <thead><tr><th>Category</th><th>Total</th><th>Available</th><th>Issued</th></tr></thead>
+            <tbody id="library-report-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-card">
+  <div class="content-card-header">
+    <h2 class="content-card-title">Student Report</h2>
+    <button class="btn btn-sm btn-outline-primary export-report-btn"><i class="fa-solid fa-download me-1"></i> Export</button>
+  </div>
+  <div class="content-card-body">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="chart-container"><canvas id="studentReportChart"></canvas></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="table-responsive-custom">
+          <table class="data-table">
+            <thead><tr><th>Class</th><th>Students</th><th>Capacity</th><th>Utilization</th></tr></thead>
+            <tbody id="student-report-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

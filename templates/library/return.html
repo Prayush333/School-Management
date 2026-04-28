@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Return Book
+{% endblock title %}
+
+{% block page_module %}library{% endblock page_module %}
+
+{% block body_attrs %}data-library-page="return"{% endblock body_attrs %}
+
+{% block content %}
+
+<div class="page-header">
+  <nav class="breadcrumb-nav" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'library-books' %}">Library</a></li>
+      <li class="breadcrumb-item active">Return Book</li>
+    </ol>
+  </nav>
+  <h1 class="page-title">Return Book</h1>
+  <p class="page-subtitle">Process book returns from students.</p>
+</div>
+
+<div class="content-card">
+  <div class="content-card-header">
+    <h2 class="content-card-title">Currently Issued Books</h2>
+  </div>
+  <div class="content-card-body no-padding">
+    <div class="table-responsive-custom">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Book</th>
+            <th>Student</th>
+            <th>Issue Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="return-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

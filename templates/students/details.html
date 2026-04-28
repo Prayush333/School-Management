@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Student Details
+{% endblock title %}
+
+{% block page_module %}students{% endblock page_module %}
+
+{% block body_attrs %}data-student-details="true"{% endblock body_attrs %}
+
+{% block content %}
+
+<!-- --- Breadcrumb --- -->
+<nav class="breadcrumb-nav" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'students-list' %}">Students</a></li>
+    <li class="breadcrumb-item active">Details</li>
+  </ol>
+</nav>
+
+<!-- -- Student Profile -- -->
+<div class="content-card" id="student-details">
+  <div class="text-center py-5"><div class="spinner"></div></div>
+</div>
+
+{% endblock content %}

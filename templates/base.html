@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Springfield Academy School Management System">
+  <title>{% block title %}Dashboard{% endblock title %} | Springfield Academy</title>
+
+  <!-- --- External Dependencies --- -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+  <!-- --- Application Styles --- -->
+  <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+<body data-page="{% block page_module %}dashboard{% endblock page_module %}" {% block body_attrs %}{% endblock body_attrs %}>
+
+  <!-- --- Loading Overlay --- -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- --- Toast Container --- -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- --- Main Layout --- -->
+  <div class="app-wrapper">
+
+    <!-- -- Sidebar Overlay -- -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- -- Sidebar Component -- -->
+    <aside id="sidebar" class="sidebar">
+      <a href="{% url 'dashboard' %}" class="sidebar-brand">
+        <div class="sidebar-brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <div class="sidebar-brand-text">Springfield</div>
+          <div class="sidebar-brand-sub">Academy</div>
+        </div>
+      </a>
+
+      <nav class="sidebar-nav">
+        <p class="sidebar-section-title">Main</p>
+        <a href="{% url 'dashboard' %}" class="sidebar-link">
+          <i class="fa-solid fa-gauge-high"></i> Dashboard
+        </a>
+
+        <p class="sidebar-section-title">Academics</p>
+        <a href="{% url 'students-list' %}" class="sidebar-link">
+          <i class="fa-solid fa-user-graduate"></i> Students
+        </a>
+        <a href="{% url 'faculty-list' %}" class="sidebar-link">
+          <i class="fa-solid fa-chalkboard-user"></i> Faculty
+        </a>
+        <a href="{% url 'staff-list' %}" class="sidebar-link">
+          <i class="fa-solid fa-users"></i> Staff
+        </a>
+
+        <p class="sidebar-section-title">Resources</p>
+        <a href="{% url 'library-books' %}" class="sidebar-link">
+          <i class="fa-solid fa-book"></i> Library
+        </a>
+        <a href="{% url 'library-issue' %}" class="sidebar-link">
+          <i class="fa-solid fa-book-open"></i> Issue Book
+        </a>
+        <a href="{% url 'library-return' %}" class="sidebar-link">
+          <i class="fa-solid fa-rotate-left"></i> Return Book
+        </a>
+
+        <p class="sidebar-section-title">System</p>
+        <a href="{% url 'reports' %}" class="sidebar-link">
+          <i class="fa-solid fa-chart-pie"></i> Reports
+        </a>
+        <a href="{% url 'settings' %}" class="sidebar-link">
+          <i class="fa-solid fa-gear"></i> Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- -- Main Content Area -- -->
+    <div class="main-content">
+
+      <!-- -- Top Navbar -- -->
+      <header class="top-navbar">
+        <button id="sidebar-toggle" class="navbar-toggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="navbar-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="global-search" placeholder="Search students, faculty, books..." aria-label="Global search">
+        </div>
+
+        <div class="navbar-actions">
+          <!-- -- Notifications Dropdown -- -->
+          <div class="dropdown">
+            <button class="nav-icon-btn" data-bs-toggle="dropdown" aria-label="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="badge-dot"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end p-0" style="width: 320px;">
+              <div class="p-3 border-bottom"><strong>Notifications</strong></div>
+              <div class="notification-item">
+                <div class="notification-icon info"><i class="fa-solid fa-user-plus"></i></div>
+                <div>
+                  <p class="notification-text">3 new students enrolled today</p>
+                  <span class="notification-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item">
+                <div class="notification-icon warning"><i class="fa-solid fa-book"></i></div>
+                <div>
+                  <p class="notification-text">5 books are overdue for return</p>
+                  <span class="notification-time">4 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item">
+                <div class="notification-icon success"><i class="fa-solid fa-calendar-check"></i></div>
+                <div>
+                  <p class="notification-text">Attendance report is ready</p>
+                  <span class="notification-time">1 day ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- -- User Profile Dropdown -- -->
+          <div class="dropdown">
+            <button class="user-dropdown-toggle" data-bs-toggle="dropdown" aria-label="User menu">
+              <div class="user-avatar">AD</div>
+              <div class="user-info">
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="{% url 'settings' %}"><i class="fa-solid fa-gear me-2"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="#"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- -- Page Content -- -->
+      <main class="page-content">
+        {% block content %}{% endblock content %}
+      </main>
+    </div>
+  </div>
+
+  <!-- --- Scripts --- -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script type="module" src="{% static 'js/app.js' %}"></script>
+  {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

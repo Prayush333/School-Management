@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+Faculty
+{% endblock title %}
+
+{% block page_module %}faculty{% endblock page_module %}
+
+{% block content %}
+
+<div class="page-header page-header-row">
+  <div>
+    <h1 class="page-title">Faculty</h1>
+    <p class="page-subtitle">View and manage teaching staff across all departments.</p>
+  </div>
+  <button id="add-faculty-btn" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Add Faculty</button>
+</div>
+
+<div class="filter-bar">
+  <div class="search-input-wrapper">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="search" id="faculty-search" class="form-control form-control-custom" placeholder="Search faculty...">
+  </div>
+  <select id="department-filter" class="form-select form-select-custom" style="width:auto">
+    <option value="">All Departments</option>
+    <option value="Mathematics">Mathematics</option>
+    <option value="Science">Science</option>
+    <option value="English">English</option>
+    <option value="History">History</option>
+    <option value="Computer Science">Computer Science</option>
+    <option value="Physical Education">Physical Education</option>
+    <option value="Arts">Arts</option>
+    <option value="Languages">Languages</option>
+  </select>
+</div>
+
+<div id="faculty-grid" class="row g-4"></div>
+
+<div class="modal fade" id="facultyModal" tabindex="-1" aria-labelledby="facultyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="facultyModalLabel">Add Faculty</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="faculty-form">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-first-name">First Name</label>
+              <input type="text" class="form-control form-control-custom" id="faculty-first-name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-last-name">Last Name</label>
+              <input type="text" class="form-control form-control-custom" id="faculty-last-name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-email">Email</label>
+              <input type="email" class="form-control form-control-custom" id="faculty-email" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-phone">Phone</label>
+              <input type="tel" class="form-control form-control-custom" id="faculty-phone" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-department">Department</label>
+              <select class="form-select form-select-custom" id="faculty-department" required>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+                <option value="History">History</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Physical Education">Physical Education</option>
+                <option value="Arts">Arts</option>
+                <option value="Languages">Languages</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-designation">Designation</label>
+              <input type="text" class="form-control form-control-custom" id="faculty-designation" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-qualification">Qualification</label>
+              <input type="text" class="form-control form-control-custom" id="faculty-qualification" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="faculty-experience">Experience (years)</label>
+              <input type="number" class="form-control form-control-custom" id="faculty-experience" min="0" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="save-faculty-btn">Save Faculty</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

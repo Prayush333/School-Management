@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}
+Settings
+{% endblock title %}
+
+{% block page_module %}settings{% endblock page_module %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">Settings</h1>
+  <p class="page-subtitle">Configure school profile, appearance, and user preferences.</p>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-3">
+    <div class="content-card">
+      <div class="content-card-body">
+        <nav class="settings-nav">
+          <button class="settings-nav-link active" data-panel="panel-profile"><i class="fa-solid fa-school"></i> School Profile</button>
+          <button class="settings-nav-link" data-panel="panel-theme"><i class="fa-solid fa-palette"></i> Theme Settings</button>
+          <button class="settings-nav-link" data-panel="panel-preferences"><i class="fa-solid fa-sliders"></i> User Preferences</button>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <div id="panel-profile" class="settings-panel active">
+      <div class="content-card">
+        <div class="content-card-header">
+          <h2 class="content-card-title">School Profile</h2>
+        </div>
+        <div class="content-card-body">
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label-custom" for="school-name">School Name</label>
+              <input type="text" class="form-control form-control-custom" id="school-name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="school-email">Email</label>
+              <input type="email" class="form-control form-control-custom" id="school-email">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="school-phone">Phone</label>
+              <input type="tel" class="form-control form-control-custom" id="school-phone">
+            </div>
+            <div class="col-12">
+              <label class="form-label-custom" for="school-address">Address</label>
+              <textarea class="form-control form-control-custom" id="school-address" rows="3"></textarea>
+            </div>
+          </div>
+          <button id="save-profile-btn" class="btn btn-primary mt-4">Save Profile</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-theme" class="settings-panel">
+      <div class="content-card">
+        <div class="content-card-header">
+          <h2 class="content-card-title">Theme Settings</h2>
+        </div>
+        <div class="content-card-body">
+          <h3 class="h6 mb-3">Appearance Mode</h3>
+          <div class="theme-options mb-4">
+            <div class="theme-option selected" data-theme="light">
+              <i class="fa-solid fa-sun" style="color:#f59e0b"></i>
+              <span>Light</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <i class="fa-solid fa-moon" style="color:#6366f1"></i>
+              <span>Dark</span>
+            </div>
+          </div>
+          <h3 class="h6 mb-3">Primary Color</h3>
+          <div class="color-scheme-options">
+            <button class="color-scheme-btn selected" data-color="#4f46e5" style="background:#4f46e5" aria-label="Indigo"></button>
+            <button class="color-scheme-btn" data-color="#10b981" style="background:#10b981" aria-label="Green"></button>
+            <button class="color-scheme-btn" data-color="#3b82f6" style="background:#3b82f6" aria-label="Blue"></button>
+            <button class="color-scheme-btn" data-color="#ef4444" style="background:#ef4444" aria-label="Red"></button>
+            <button class="color-scheme-btn" data-color="#8b5cf6" style="background:#8b5cf6" aria-label="Purple"></button>
+            <button class="color-scheme-btn" data-color="#f59e0b" style="background:#f59e0b" aria-label="Amber"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-preferences" class="settings-panel">
+      <div class="content-card">
+        <div class="content-card-header">
+          <h2 class="content-card-title">User Preferences</h2>
+        </div>
+        <div class="content-card-body">
+          <div class="mb-4">
+            <label class="form-label-custom" for="language-select">Language</label>
+            <select class="form-select form-select-custom" id="language-select" style="max-width:240px">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+            </select>
+          </div>
+          <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="notifications-toggle" checked>
+            <label class="form-check-label" for="notifications-toggle">Enable push notifications</label>
+          </div>
+          <div class="form-check form-switch mb-4">
+            <input class="form-check-input" type="checkbox" id="email-alerts-toggle" checked>
+            <label class="form-check-label" for="email-alerts-toggle">Enable email alerts</label>
+          </div>
+          <button id="save-preferences-btn" class="btn btn-primary">Save Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

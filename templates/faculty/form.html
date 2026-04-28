@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Faculty
+{% endblock title %}
+
+{% block page_module %}faculty{% endblock page_module %}
+
+{% block body_attrs %}data-faculty-form="true"{% endblock body_attrs %}
+
+{% block content %}
+
+<div class="page-header">
+  <nav class="breadcrumb-nav" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'faculty-list' %}">Faculty</a></li>
+      <li class="breadcrumb-item active">Add</li>
+    </ol>
+  </nav>
+  <h1 class="page-title">Add Faculty Member</h1>
+</div>
+
+<div class="content-card">
+  <div class="content-card-body">
+    <form id="faculty-page-form">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-first-name">First Name</label>
+          <input type="text" class="form-control form-control-custom" id="faculty-first-name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-last-name">Last Name</label>
+          <input type="text" class="form-control form-control-custom" id="faculty-last-name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-email">Email</label>
+          <input type="email" class="form-control form-control-custom" id="faculty-email" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-phone">Phone</label>
+          <input type="tel" class="form-control form-control-custom" id="faculty-phone" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-department">Department</label>
+          <select class="form-select form-select-custom" id="faculty-department" required>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Science">Science</option>
+            <option value="English">English</option>
+            <option value="History">History</option>
+            <option value="Computer Science">Computer Science</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-designation">Designation</label>
+          <input type="text" class="form-control form-control-custom" id="faculty-designation" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-qualification">Qualification</label>
+          <input type="text" class="form-control form-control-custom" id="faculty-qualification" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="faculty-experience">Experience (years)</label>
+          <input type="number" class="form-control form-control-custom" id="faculty-experience" min="0" required>
+        </div>
+      </div>
+      <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Add Faculty</button>
+        <a href="{% url 'faculty-list' %}" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,1 @@
+Fix Chart.js deprecation warning | 2026-04-30  +0545

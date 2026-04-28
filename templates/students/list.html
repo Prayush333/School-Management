@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}
+Students
+{% endblock title %}
+
+{% block page_module %}students{% endblock page_module %}
+
+{% block content %}
+
+<!-- --- Page Header --- -->
+<div class="page-header page-header-row">
+  <div>
+    <h1 class="page-title">Students</h1>
+    <p class="page-subtitle">Manage student records, enrollment, and attendance.</p>
+  </div>
+  <button id="add-student-btn" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Add Student</button>
+</div>
+
+<!-- -- Filter Bar -- -->
+<div class="filter-bar">
+  <div class="search-input-wrapper">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="search" id="student-search" class="form-control form-control-custom" placeholder="Search students...">
+  </div>
+  <select id="grade-filter" class="form-select form-select-custom" style="width:auto">
+    <option value="">All Grades</option>
+    <option value="9">Grade 9</option>
+    <option value="10">Grade 10</option>
+    <option value="11">Grade 11</option>
+    <option value="12">Grade 12</option>
+  </select>
+  <select id="status-filter" class="form-select form-select-custom" style="width:auto">
+    <option value="">All Status</option>
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+  </select>
+</div>
+
+<!-- -- Students Table -- -->
+<div class="content-card">
+  <div class="content-card-body no-padding">
+    <div class="table-responsive-custom">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Grade</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Attendance</th>
+            <th>Status</th>
+            <th>Enrolled</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="students-table-body"></tbody>
+      </table>
+    </div>
+    <div class="pagination-wrapper" id="students-pagination">
+      <div id="pagination-info" class="pagination-info"></div>
+      <div class="pagination-controls"></div>
+    </div>
+  </div>
+</div>
+
+<!-- -- Add/Edit Student Modal -- -->
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentModalLabel">Add Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="student-form">
+          <input type="hidden" id="student-form-id">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label-custom" for="student-first-name">First Name</label>
+              <input type="text" class="form-control form-control-custom" id="student-first-name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="student-last-name">Last Name</label>
+              <input type="text" class="form-control form-control-custom" id="student-last-name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="student-email">Email</label>
+              <input type="email" class="form-control form-control-custom" id="student-email" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="student-phone">Phone</label>
+              <input type="tel" class="form-control form-control-custom" id="student-phone" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label-custom" for="student-grade">Grade</label>
+              <select class="form-select form-select-custom" id="student-grade" required>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label-custom" for="student-section">Section</label>
+              <select class="form-select form-select-custom" id="student-section" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label-custom" for="student-gender">Gender</label>
+              <select class="form-select form-select-custom" id="student-gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="student-dob">Date of Birth</label>
+              <input type="date" class="form-control form-control-custom" id="student-dob" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-custom" for="student-status">Status</label>
+              <select class="form-select form-select-custom" id="student-status" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="save-student-btn">Save Student</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

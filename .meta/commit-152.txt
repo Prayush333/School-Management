@@ -1,0 +1,1 @@
+Add CSS custom property for sidebar width | 2026-05-06  +0545

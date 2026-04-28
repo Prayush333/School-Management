@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Staff
+{% endblock title %}
+
+{% block page_module %}staff{% endblock page_module %}
+
+{% block body_attrs %}data-staff-form="true"{% endblock body_attrs %}
+
+{% block content %}
+
+<div class="page-header">
+  <nav class="breadcrumb-nav" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'staff-list' %}">Staff</a></li>
+      <li class="breadcrumb-item active">Add</li>
+    </ol>
+  </nav>
+  <h1 class="page-title">Add Staff Member</h1>
+</div>
+
+<div class="content-card">
+  <div class="content-card-body">
+    <form id="staff-page-form">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label-custom" for="staff-first-name">First Name</label>
+          <input type="text" class="form-control form-control-custom" id="staff-first-name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="staff-last-name">Last Name</label>
+          <input type="text" class="form-control form-control-custom" id="staff-last-name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="staff-email">Email</label>
+          <input type="email" class="form-control form-control-custom" id="staff-email" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="staff-phone">Phone</label>
+          <input type="tel" class="form-control form-control-custom" id="staff-phone" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="staff-department">Department</label>
+          <select class="form-select form-select-custom" id="staff-department" required>
+            <option value="Administration">Administration</option>
+            <option value="Finance">Finance</option>
+            <option value="Library">Library</option>
+            <option value="IT">IT</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-custom" for="staff-designation">Designation</label>
+          <input type="text" class="form-control form-control-custom" id="staff-designation" required>
+        </div>
+      </div>
+      <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Add Staff</button>
+        <a href="{% url 'staff-list' %}" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

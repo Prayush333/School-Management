@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+Issue Book
+{% endblock title %}
+
+{% block page_module %}library{% endblock page_module %}
+
+{% block body_attrs %}data-library-page="issue"{% endblock body_attrs %}
+
+{% block content %}
+
+<div class="page-header">
+  <nav class="breadcrumb-nav" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'library-books' %}">Library</a></li>
+      <li class="breadcrumb-item active">Issue Book</li>
+    </ol>
+  </nav>
+  <h1 class="page-title">Issue Book</h1>
+  <p class="page-subtitle">Issue a library book to a student.</p>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="content-card">
+      <div class="content-card-header">
+        <h2 class="content-card-title">Book Issue Form</h2>
+      </div>
+      <div class="content-card-body">
+        <form id="issue-form">
+          <div class="mb-3">
+            <label class="form-label-custom" for="issue-book">Select Book</label>
+            <select class="form-select form-select-custom" id="issue-book" required></select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label-custom" for="issue-student">Select Student</label>
+            <select class="form-select form-select-custom" id="issue-student" required></select>
+          </div>
+          <div class="mb-4">
+            <label class="form-label-custom" for="issue-due-date">Due Date</label>
+            <input type="date" class="form-control form-control-custom" id="issue-due-date" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-book-open me-2"></i>Issue Book</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
