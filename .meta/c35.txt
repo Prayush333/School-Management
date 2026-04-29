@@ -1,0 +1,1 @@
+Create api.js with mock config
