@@ -1,0 +1,1 @@
+Add search debounce 300ms
