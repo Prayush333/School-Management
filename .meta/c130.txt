@@ -1,0 +1,1 @@
+Add applyDarkMode function
