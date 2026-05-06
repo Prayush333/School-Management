@@ -1,0 +1,1 @@
+Add confirm dialog before delete
