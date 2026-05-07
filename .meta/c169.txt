@@ -1,0 +1,1 @@
+Improve student detail page layout
