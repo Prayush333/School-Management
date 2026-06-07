@@ -1,4 +1,3 @@
-
 # Prayush Academy — School Management System
 
 A production-ready School Management System frontend built with plain HTML, CSS, and JavaScript. No build tools, no frameworks, no backend required — just open and run.
@@ -210,4 +209,4 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 ## License
 
-MIT
+Prayush Neupane
