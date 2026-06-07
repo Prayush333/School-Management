@@ -1,1 +1,0 @@
-Fix chart resize on window resize

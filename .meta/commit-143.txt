@@ -1,1 +1,0 @@
-Fix modal close on backdrop click | 2026-05-05  +0545

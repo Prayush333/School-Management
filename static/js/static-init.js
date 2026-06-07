@@ -75,7 +75,7 @@ export async function renderTemplate(tplPath) {
     .replace(/\{%\s*block\s+content\s*%\}[\s\S]*?\{%\s*endblock\s+content\s*%\}/, blocks.content)
     .replace(/\{%\s*block\s+extra_js\s*%\}[\s\S]*?\{%\s*endblock\s+extra_js\s*%\}/, blocks.extra_js);
   rendered = setActiveNav(rendered, tplPath);
-  rendered = rendered.replace(/<title>[^<]*<\/title>/, `<title>${blocks.title} | Springfield Academy</title>`);
+  rendered = rendered.replace(/<title>[^<]*<\/title>/, `<title>${blocks.title} | Prayush Academy</title>`);
 
   document.open();
   document.write(rendered);

@@ -1,1 +1,0 @@
-Add theme color CSS variable update

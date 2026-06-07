@@ -1,1 +1,0 @@
-Improve color contrast for accessibility

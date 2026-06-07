@@ -284,7 +284,7 @@ export async function getDashboardStats() {
 
 export function getSettings() {
   return getStoredData('sms_settings', {
-    schoolName: 'Springfield Academy',
+    schoolName: 'Prayush Academy',
     schoolEmail: 'admin@springfield.edu',
     schoolPhone: '+1 (555) 123-4567',
     schoolAddress: '100 Education Boulevard, Springfield, ST 12345',
